@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.lyb.spark
+package org.scala
 
 import scala.math.random
 import org.apache.spark._
@@ -24,7 +24,7 @@ import org.apache.spark._
 
 object SparkPi {
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("Spark Pi")
+    val conf = new SparkConf().setAppName("Spark Pi").setMaster("local")
     val spark = new SparkContext(conf)
     //spark.addJar({"C:\\Software\\eclipse_luna\\SparkPi.jar"})
     val slices = if (args.length > 0) args(0).toInt else 2

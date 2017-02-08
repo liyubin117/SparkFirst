@@ -1,4 +1,4 @@
-package com.lyb.spark
+package org.scala
 
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
