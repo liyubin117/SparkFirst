@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.scala
+package org.spark.scala
 
 import scala.math.random
 import org.apache.spark._
