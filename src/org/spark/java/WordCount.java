@@ -1,4 +1,4 @@
-package org.java;
+package org.spark.java;
 
 import java.util.Arrays;
 import java.util.List;
