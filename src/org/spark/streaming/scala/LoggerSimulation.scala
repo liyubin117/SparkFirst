@@ -1,7 +1,7 @@
 package org.spark.streaming.scala
 
-import java.io.{PrintWriter, OutputStreamWriter, IOException, BufferedOutputStream}
-import java.util.concurrent.{TimeUnit, Executors}
+import java.io.{ PrintWriter, OutputStreamWriter, IOException, BufferedOutputStream }
+import java.util.concurrent.{ TimeUnit, Executors }
 import java.net.ServerSocket
 
 /**

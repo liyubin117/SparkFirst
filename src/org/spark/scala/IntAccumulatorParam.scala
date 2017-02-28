@@ -6,10 +6,10 @@ class IntAccumulatorParam extends AccumulatorParam[Int] {
     initialValue
   }
   def addInPlace(v1: Int, v2: Int): Int = {
-    v1+v2
+    v1 + v2
   }
-  
-  def IntAccumulatorParam(initialValue: Int){
+
+  def IntAccumulatorParam(initialValue: Int) {
     initialValue
   }
 }

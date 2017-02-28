@@ -21,7 +21,7 @@ class RichArithmetic(val arithmetic: Arithmetic) {
 object ArithmeticToRichArithmetic {
   //将Arithmetic转换为RichArithmetic
   //Arithmetic对象上可以直接调用RichArithmetic定义的方法
-  implicit def arithmeticToRichArithmetic(arithmetic: Arithmetic):RichArithmetic = {
+  implicit def arithmeticToRichArithmetic(arithmetic: Arithmetic): RichArithmetic = {
     new RichArithmetic(arithmetic)
   }
 }
@@ -31,8 +31,7 @@ object ImplicitDemo {
     import ArithmeticToRichArithmetic._ //引用方法
     val a = new Arithmetic
     println(a.add(11, 21))
-    println(a.substract(21,11)) //substract不属于Arithmetic
+    println(a.substract(21, 11)) //substract不属于Arithmetic
   }
-
 
 }

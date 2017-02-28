@@ -15,7 +15,6 @@ object ImplicitClassContext {
     def multiply(x: Int, y: Int) = {
       x * y
     }
-
   }
 
 }

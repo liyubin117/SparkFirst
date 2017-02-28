@@ -13,7 +13,7 @@ import org.apache.spark.util.Vector
  */
 object KMeans {
   val N = 1000
-  val R = 1000    // Scaling factor
+  val R = 1000 // Scaling factor
   val D = 10
   val K = 10
   val convergeDist = 0.001
@@ -59,18 +59,18 @@ object KMeans {
 
     println("Initial centers: " + kPoints)
 
-    while(tempDist > convergeDist) {
+    while (tempDist > convergeDist) {
       //查找与每个向量距离最近的质心
-      var closest = data.map (p => (closestPoint(p, kPoints), (p, 1)))
+      var closest = data.map(p => (closestPoint(p, kPoints), (p, 1)))
 
       //把那些具有相同质心的向量聚合在一起
-      var mappings = closest.groupBy[Int] (x => x._1)
+      var mappings = closest.groupBy[Int](x => x._1)
 
       //把具有相同质心的向量标量相加
-      var pointStats = mappings.map(pair => pair._2.reduceLeft [(Int, (Vector, Int))] {case ((id1, (x1, y1)), (id2, (x2, y2))) => (id1, (x1 + x2, y1+y2))})
+      var pointStats = mappings.map(pair => pair._2.reduceLeft[(Int, (Vector, Int))] { case ((id1, (x1, y1)), (id2, (x2, y2))) => (id1, (x1 + x2, y1 + y2)) })
 
       //找出十个新的质心
-      var newPoints = pointStats.map {mapping => (mapping._1, mapping._2._1/mapping._2._2)}
+      var newPoints = pointStats.map { mapping => (mapping._1, mapping._2._1 / mapping._2._2) }
 
       //迭代收敛条件，即质心变化不大
       tempDist = 0.0

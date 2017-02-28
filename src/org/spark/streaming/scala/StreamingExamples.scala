@@ -1,7 +1,7 @@
 package org.spark.streaming.scala
 
 import org.apache.spark.Logging
-import org.apache.log4j.{Level, Logger}
+import org.apache.log4j.{ Level, Logger }
 
 /**
  * Chen Chao
