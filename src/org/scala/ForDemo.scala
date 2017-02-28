@@ -1,4 +1,4 @@
-package main.scala
+package org.scala
 
 object ForDemo {
   def main(args:Array[String]){
