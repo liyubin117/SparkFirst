@@ -2,7 +2,7 @@ package org.scala
 
 object FuncDemo {
   def main(args: Array[String]) {
-    println(sum(1, 2, 3, 4, 5))
+    println(sum2(1, 2, 3, 4, 5))
     exceptionProcessing()
     println(addXY(3)(5))
     
@@ -17,7 +17,7 @@ object FuncDemo {
     println(myValue3())
   }
   //变长参数T*
-  def sum(elements: Int*): Int = {
+  def sum2(elements: Int*): Int = {
     var sum = 0
     //elements.foreach(x=>sum+=x)
     elements.foreach(sum += _)
@@ -86,5 +86,5 @@ object FuncDemo {
       println("hello!")
     }
     sayHello
-  }
+  
 }
