@@ -82,7 +82,7 @@ object CaseDemo {
 
   case class Dog(name: String) extends Animal
 
-  case class Horse(name: String, age: Int, weight: Double)
+  case class Horse(name: String, age: Int, weight: Double) extends Animal
 
   def main(args: Array[String]) {
     println(Cat("kitty"))
@@ -91,6 +91,18 @@ object CaseDemo {
     val h1 = Horse("H", 8, 121.1)
     val h2 = h1.copy(name = "X")
     println(h2)
+    
+  //case class通常与match合用
+    def printAnimal(arg:Animal){
+      arg match {
+        case Cat(n)=>println("猫："+n)
+        case Dog(m)=>println("狗："+arg+" 名字："+m)
+        case Horse(a,b,c)=>println("马："+arg+" 名字："+a)
+      }
+    }
+    printAnimal(Cat("kitty"))
+    printAnimal(Dog("carl"))
+    printAnimal(h2)
 
     println(simpleMatch(100))
     println(simpleMatch(100, "200"))
