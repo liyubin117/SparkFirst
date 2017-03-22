@@ -13,6 +13,7 @@ object Client extends App {
   testProtoType
   testAdapter
   testBridge
+  testComposite
 
   //测试单例模式
   def testSingletonServer() {
@@ -184,6 +185,44 @@ object Client extends App {
      * 设置文件
      */
     image.parseFile("你好")
+  }
+  
+  //测试组合模式
+  def testComposite(){
+    println("-------组合模式：-------")
+     /**
+     * 文件夹
+     */
+    val folder1 = Folder("李宇彬的资料")
+    val folder2 = Folder("图像资料")
+    val folder3 = Folder("文本文件")
+    val folder4 = Folder("视频资料")
+
+
+    /**
+     * 文件
+     */
+    val file1 = ImageFile("qq截图.jpg")
+    val file2 = ImageFile("美图.png")
+    val file3 = TextFile("solr.log")
+    val file4 = TextFile("迭代.doc")
+    val file5 = VideoFile("测试.avi")
+
+    folder2.add(file1)
+    folder2.add(file2)
+    folder3.add(file3)
+    folder3.add(file4)
+    folder4.add(file5)
+    folder1.add(folder2)
+    folder1.add(folder3)
+    folder1.add(folder4)
+
+    folder1.remove(folder3)
+//    folder1.child(2).killVirus()
+    /**
+     * 对根文件夹杀毒，递归调用
+     */
+    folder1.killVirus()
   }
 
 }
