@@ -14,6 +14,7 @@ object Client extends App {
   testAdapter
   testBridge
   testComposite
+  testDecorator
 
   //测试单例模式
   def testSingletonServer() {
@@ -186,18 +187,17 @@ object Client extends App {
      */
     image.parseFile("你好")
   }
-  
+
   //测试组合模式
-  def testComposite(){
+  def testComposite() {
     println("-------组合模式：-------")
-     /**
+    /**
      * 文件夹
      */
     val folder1 = Folder("李宇彬的资料")
     val folder2 = Folder("图像资料")
     val folder3 = Folder("文本文件")
     val folder4 = Folder("视频资料")
-
 
     /**
      * 文件
@@ -218,11 +218,28 @@ object Client extends App {
     folder1.add(folder4)
 
     folder1.remove(folder3)
-//    folder1.child(2).killVirus()
+    //    folder1.child(2).killVirus()
     /**
      * 对根文件夹杀毒，递归调用
      */
     folder1.killVirus()
+  }
+
+  //测试装饰器
+  def testDecorator() {
+    /**
+     * 窗口
+     */
+    val component: Component = new Window
+    /**
+     * 滚动条来装饰窗口
+     */
+    val componentSB: Component = new ScrollBarDecorator(component)
+    /**
+     * 黑色边框装饰滚动条装饰类
+     */
+    val componentBB: Component = new BlackBorderDecorator(componentSB)
+    componentBB.display()
   }
 
 }
