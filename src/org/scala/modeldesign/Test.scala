@@ -15,6 +15,9 @@ object Client extends App {
   testBridge
   testComposite
   testDecorator
+  //程序有一些问题，待研究
+  //testProxy
+  testChain
 
   //测试单例模式
   def testSingletonServer() {
@@ -240,6 +243,34 @@ object Client extends App {
      */
     val componentBB: Component = new BlackBorderDecorator(componentSB)
     componentBB.display()
+  }
+
+  //测试代理类
+  def testProxy() {
+    val searcher1: Searcher = ProxySearcher
+    println(searcher1.doSearch("ctt", "12223", "hello"))
+    val searcher2: Searcher = ProxySearcher
+    println(searcher2.doSearch("ct", "12334", "helloworld"))
+
+    print(searcher1.eq(searcher2))
+  }
+
+  //测试责任链
+  def testChain() {
+    val ZH: Approve = new Director("周华")
+    val YJY: Approve = new VicePresident("游建友")
+    val WZX: Approve = new President("吴志雄")
+    val meeting: Approve = new Congress("董事会")
+
+    ZH.setSuccessor(YJY)
+    YJY.setSuccessor(WZX)
+    WZX.setSuccessor(meeting)
+
+    ZH.processRequest(PurchaseRequest(45000, 1001, "大数据卡口项目"))
+    ZH.processRequest(PurchaseRequest(60000, 1002, "服务器购置"))
+    ZH.processRequest(PurchaseRequest(145000, 1003, "星环开科技专利购买"))
+    ZH.processRequest(PurchaseRequest(1145000, 1004, "公司并购"))
+
   }
 
 }
