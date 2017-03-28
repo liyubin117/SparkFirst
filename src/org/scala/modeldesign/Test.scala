@@ -19,10 +19,12 @@ object Client extends App {
   //testProxy
   testChain
   testCommand
+  testInterpreter
+  testMediator
 
   //测试单例模式
   def testSingletonServer() {
-    println("-------单例模式：-------")
+    println("--------------单例模式：--------------")
     //构建负载均衡器1
     val balance1 = LoadBalance
     //构建负载均衡器2
@@ -48,7 +50,7 @@ object Client extends App {
 
   //测试简单工厂
   def testSimpleFactoryChart() {
-    println("-------简单工厂模式：-------")
+    println("--------------简单工厂模式：--------------")
     //产出饼状图
     val pie = Chart("pie")
     pie.display()
@@ -62,7 +64,7 @@ object Client extends App {
 
   //测试工厂方法
   def testFactoryMethod() {
-    println("-------工厂方法模式：-------")
+    println("--------------工厂方法模式：--------------")
     //日志工厂1
     val Logger1: LoggerFactory = DatabaseLoggerFactory
     //日志工厂2
@@ -83,7 +85,7 @@ object Client extends App {
 
   //测试建造者
   def testBuilder() {
-    println("-------建造者模式：-------")
+    println("--------------建造者模式：--------------")
     /**
      * 英雄构造器
      */
@@ -120,7 +122,7 @@ object Client extends App {
 
   //测试原型模式
   def testProtoType() {
-    println("-------原型模式：-------")
+    println("--------------原型模式：--------------")
     val log_previous = WeeklyLog("陈珏煊", "第10周", "本周主要是进行设计模式学习", Attachment("原型模式.pdf"))
     println("*******周报*******")
     println("周次：" + log_previous.date)
@@ -160,7 +162,7 @@ object Client extends App {
 
   //测试适配器
   def testAdapter() {
-    println("-------适配器模式：-------")
+    println("--------------适配器模式：--------------")
     //原数组
     val sources = Array(84, 76, 50, 69, 90, 91, 88, 86)
     //适配器接口
@@ -180,7 +182,7 @@ object Client extends App {
 
   //测试桥接模式
   def testBridge() {
-    println("-------桥接模式：-------")
+    println("--------------桥接模式：--------------")
     /**
      * 图片
      */
@@ -198,7 +200,7 @@ object Client extends App {
 
   //测试组合模式
   def testComposite() {
-    println("-------组合模式：-------")
+    println("--------------组合模式：--------------")
     /**
      * 文件夹
      */
@@ -235,7 +237,7 @@ object Client extends App {
 
   //测试装饰器
   def testDecorator() {
-    println("-------装饰器模式：-------")
+    println("--------------装饰器模式：--------------")
     /**
      * 窗口
      */
@@ -253,7 +255,7 @@ object Client extends App {
 
   //测试代理类
   def testProxy() {
-    println("-------代理类模式：-------")
+    println("--------------代理类模式：--------------")
     val searcher1: Searcher = ProxySearcher
     println(searcher1.doSearch("ctt", "12223", "hello"))
     val searcher2: Searcher = ProxySearcher
@@ -264,7 +266,7 @@ object Client extends App {
 
   //测试责任链
   def testChain() {
-    println("-------责任链模式：-------")
+    println("--------------责任链模式：--------------")
     val ZH: Approve = new Director("周华")
     val YJY: Approve = new VicePresident("游建友")
     val WZX: Approve = new President("吴志雄")
@@ -282,7 +284,7 @@ object Client extends App {
 
   //测试命令模式
   def testCommand() {
-    println("-------命令模式：-------")
+    println("--------------命令模式：--------------")
     val command: AbstractCommand = new AddCommand
     val form = new CalculatorForm(command)
     form.compute(10)
@@ -299,4 +301,77 @@ object Client extends App {
     form.compute(100)
   }
 
+  //测试解释器模式
+  def testInterpreter() {
+    println("--------------解释器模式：--------------")
+    val robot = new Robot
+    robot up Run length 10 and Then left Move length 5 and Then right Run length 3 and Then down Move length 8
+  }
+
+  //测试中介者模式
+  def testMediator() {
+    println("--------------中介者模式：--------------")
+    val admin: Person = new Admin("admin")
+    val member1: Person = new Member("member1")
+    val member2: Person = new Member("member2")
+    val member3: Person = new Member("member3")
+    val member4: Person = new Member("member4")
+
+    val qqSoftware: AbstractSoftware = new QQSoftware("研发中心")
+    admin.setAbstractSoftware(qqSoftware)
+    member1.setAbstractSoftware(qqSoftware)
+    member2.setAbstractSoftware(qqSoftware)
+    member3.setAbstractSoftware(qqSoftware)
+    member4.setAbstractSoftware(qqSoftware)
+
+    admin.add(admin)
+    admin.add(member1)
+    admin.add(member2)
+    admin.add(member3)
+    admin.add(member4)
+    admin.add(member1)
+
+    admin.speak("hello")
+    admin.remove(member1)
+
+    member1.speak("hi")
+
+    member2.add(member1)
+    member2.remove(member2)
+
+    member2.speak("admin")
+
+    member3.privateChat(admin, "你好")
+    member3.privateChat(member2, "你好")
+
+    member2.privateChat(admin, "加我")
+
+    println("******************")
+
+    val msnSoftware: AbstractSoftware = new MSNSoftware("通研事业部")
+    admin.setAbstractSoftware(msnSoftware)
+    member1.setAbstractSoftware(msnSoftware)
+    member2.setAbstractSoftware(msnSoftware)
+    member3.setAbstractSoftware(msnSoftware)
+    member4.setAbstractSoftware(msnSoftware)
+
+    admin.add(admin)
+    admin.add(member1)
+    admin.add(member2)
+    admin.add(member3)
+    admin.add(member4)
+    admin.add(member1)
+
+    admin.speak("hello")
+    admin.remove(member1)
+
+    member1.speak("hi")
+
+    member2.add(member1)
+
+    member2.speak("admin")
+
+    member2.privateChat(member3, "test")
+
+  }
 }
