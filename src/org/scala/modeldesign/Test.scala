@@ -18,9 +18,11 @@ object Client extends App {
   //程序有一些问题，待研究
   //testProxy
   testChain
+  testCommand
 
   //测试单例模式
   def testSingletonServer() {
+    println("-------单例模式：-------")
     //构建负载均衡器1
     val balance1 = LoadBalance
     //构建负载均衡器2
@@ -46,6 +48,7 @@ object Client extends App {
 
   //测试简单工厂
   def testSimpleFactoryChart() {
+    println("-------简单工厂模式：-------")
     //产出饼状图
     val pie = Chart("pie")
     pie.display()
@@ -59,6 +62,7 @@ object Client extends App {
 
   //测试工厂方法
   def testFactoryMethod() {
+    println("-------工厂方法模式：-------")
     //日志工厂1
     val Logger1: LoggerFactory = DatabaseLoggerFactory
     //日志工厂2
@@ -79,6 +83,7 @@ object Client extends App {
 
   //测试建造者
   def testBuilder() {
+    println("-------建造者模式：-------")
     /**
      * 英雄构造器
      */
@@ -230,6 +235,7 @@ object Client extends App {
 
   //测试装饰器
   def testDecorator() {
+    println("-------装饰器模式：-------")
     /**
      * 窗口
      */
@@ -247,6 +253,7 @@ object Client extends App {
 
   //测试代理类
   def testProxy() {
+    println("-------代理类模式：-------")
     val searcher1: Searcher = ProxySearcher
     println(searcher1.doSearch("ctt", "12223", "hello"))
     val searcher2: Searcher = ProxySearcher
@@ -257,6 +264,7 @@ object Client extends App {
 
   //测试责任链
   def testChain() {
+    println("-------责任链模式：-------")
     val ZH: Approve = new Director("周华")
     val YJY: Approve = new VicePresident("游建友")
     val WZX: Approve = new President("吴志雄")
@@ -270,7 +278,25 @@ object Client extends App {
     ZH.processRequest(PurchaseRequest(60000, 1002, "服务器购置"))
     ZH.processRequest(PurchaseRequest(145000, 1003, "星环开科技专利购买"))
     ZH.processRequest(PurchaseRequest(1145000, 1004, "公司并购"))
+  }
 
+  //测试命令模式
+  def testCommand() {
+    println("-------命令模式：-------")
+    val command: AbstractCommand = new AddCommand
+    val form = new CalculatorForm(command)
+    form.compute(10)
+    form.compute(5)
+    form.undo()
+    form.undo()
+    form.redo()
+    form.redo()
+    form.redo()
+    form.undo()
+    form.undo()
+    form.undo()
+    form.redo()
+    form.compute(100)
   }
 
 }
