@@ -21,6 +21,7 @@ object Client extends App {
   testCommand
   testInterpreter
   testMediator
+  testMemento
 
   //测试单例模式
   def testSingletonServer() {
@@ -373,5 +374,31 @@ object Client extends App {
 
     member2.privateChat(member3, "test")
 
+  }
+
+  //测试备忘录模式
+  def testMemento() {
+    println("--------------备忘录模式：--------------")
+    val chess = new Chessman("马", 1, 1)
+    chess.undo(chess)
+    chess.play(chess)
+    chess.y = 4
+    chess.play(chess)
+    chess.x = 5
+
+    chess.play(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.redo(chess)
+    chess.redo(chess)
+    chess.redo(chess)
+    chess.redo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.redo(chess)
   }
 }
