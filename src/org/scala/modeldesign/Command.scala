@@ -124,3 +124,23 @@ class CalculatorForm(command: AbstractCommand) {
         println(s"执行redo，运算结果为: $i")
     }
 }
+
+object Command{
+  def testCommand() {
+    println("--------------命令模式：--------------")
+    val command: AbstractCommand = new AddCommand
+    val form = new CalculatorForm(command)
+    form.compute(10)
+    form.compute(5)
+    form.undo()
+    form.undo()
+    form.redo()
+    form.redo()
+    form.redo()
+    form.undo()
+    form.undo()
+    form.undo()
+    form.redo()
+    form.compute(100)
+  }
+}

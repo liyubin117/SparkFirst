@@ -55,3 +55,15 @@ object DatabaseLoggerFactory extends LoggerFactory {
 object FileLoggerFactory extends LoggerFactory {
   override def createLogger(): Logger = new FileLogger
 }
+
+object FactoryMethod{
+  def testFactoryMethod() {
+    println("--------------工厂方法模式：--------------")
+    //日志工厂1
+    val Logger1: LoggerFactory = DatabaseLoggerFactory
+    //日志工厂2
+    val Logger2: LoggerFactory = FileLoggerFactory
+    Logger1.createLogger().writeLog()
+    Logger2.createLogger().writeLog()
+  }
+}

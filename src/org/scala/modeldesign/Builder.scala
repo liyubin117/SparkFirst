@@ -136,3 +136,41 @@ object AngleBuilder extends ActorBuilder {
 
   override def createActor() = actor
 }
+
+object Builder{
+  def testBuilder() {
+    println("--------------建造者模式：--------------")
+    /**
+     * 英雄构造器
+     */
+    val ab1: ActorBuilder = HeroBuilder
+    val actor1 = ab1.construct(ab1)
+    println(actor1.role + "的外观：")
+    println("性别：" + actor1.sex)
+    println("面容：" + actor1.face)
+    println("服装：" + actor1.costume)
+    println("发型：" + actor1.hairstyle)
+
+    /**
+     * 天使构造器
+     */
+    val ab2: ActorBuilder = AngleBuilder
+    val actor2 = ab2.construct(ab2)
+    println(actor2.role + "的外观：")
+    println("性别：" + actor2.sex)
+    println("面容：" + actor2.face)
+    println("服装：" + actor2.costume)
+    println("发型：" + actor2.hairstyle)
+
+    /**
+     * 恶魔构造器
+     */
+    val ab3: ActorBuilder = DevilBuilder
+    val actor3 = ab3.construct(ab3)
+    println(actor3.role + "的外观：")
+    println("性别：" + actor3.sex)
+    println("面容：" + actor3.face)
+    println("服装：" + actor3.costume)
+    println("发型：" + actor3.hairstyle)
+  }
+}

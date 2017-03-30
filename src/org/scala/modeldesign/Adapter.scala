@@ -85,3 +85,24 @@ object OperationAdapter extends ScoreOperation {
   //调用适配者二分查找的二分查找方法，实现接口的方法
   override def search(array: Array[Int], key: Int) = searchObj.binarySearch(array, key)
 }
+
+object Adapter{
+   def testAdapter() {
+    println("--------------适配器模式：--------------")
+    //原数组
+    val sources = Array(84, 76, 50, 69, 90, 91, 88, 86)
+    //适配器接口
+    val scoreOperation: ScoreOperation = OperationAdapter
+    //排序
+    val result = scoreOperation.sort(sources)
+    println("成绩排序输出")
+    result.foreach(x => print(x + ","))
+    var key = 90
+    println(s"查找成绩：$key")
+    println(scoreOperation.search(result, key))
+    if (scoreOperation.search(result, key) == 1) println(s"找到成绩$key") else println(s"没有找到成绩$key")
+    key = 89
+    println(s"查找成绩：$key")
+    if (scoreOperation.search(result, key) == 1) println(s"找到成绩$key") else println(s"没有找到成绩$key")
+  }
+}

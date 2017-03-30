@@ -99,6 +99,31 @@ trait ChessmanFunction {
             case _ => println(s"异常$index")
         }
     }
+}
 
+object Memento{
+  def testMemento() {
+    println("--------------备忘录模式：--------------")
+    val chess = new Chessman("马", 1, 1)
+    chess.undo(chess)
+    chess.play(chess)
+    chess.y = 4
+    chess.play(chess)
+    chess.x = 5
 
+    chess.play(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.redo(chess)
+    chess.redo(chess)
+    chess.redo(chess)
+    chess.redo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.undo(chess)
+    chess.redo(chess)
+  }
 }

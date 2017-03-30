@@ -107,3 +107,14 @@ object SummerSkinFactory extends SkinFactory {
    */
   override def createTextField(): TextField = new SummerTextField
 }
+
+object AbstractFactory{
+    def testAbstractFactory() {
+    // 构建皮肤工厂
+    val factory: SkinFactory = SpringSkinFactory
+    //按钮的展示方法
+    factory.createButton().display()
+    //文本框的方法
+    factory.createTextField().display()
+  }
+}

@@ -67,3 +67,19 @@ object  Chart {
         case "line" =>println("创建折线图"); new LineChart
     }
 }
+
+
+object SimpleFactoryChart{
+  def testSimpleFactoryChart() {
+    println("--------------简单工厂模式：--------------")
+    //产出饼状图
+    val pie = Chart("pie")
+    pie.display()
+    //产出柱状图
+    val histogram = Chart("histogram")
+    histogram.display()
+    //产出折线图
+    val line = Chart("line")
+    line.display()
+  }
+}

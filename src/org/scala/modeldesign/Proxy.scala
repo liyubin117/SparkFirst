@@ -144,3 +144,14 @@ object AccessDAO {
   def insertLog(params: ArrayBuffer[Any]) = MySQLDBConn.updateRow(sqlInsert, params)
 }
 
+object Proxy{
+  def testProxy() {
+    println("--------------代理类模式：--------------")
+    val searcher1: Searcher = ProxySearcher
+    println(searcher1.doSearch("ctt", "12223", "hello"))
+    val searcher2: Searcher = ProxySearcher
+    println(searcher2.doSearch("ct", "12334", "helloworld"))
+
+    print(searcher1.eq(searcher2))
+  }
+}

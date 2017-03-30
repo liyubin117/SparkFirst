@@ -37,3 +37,29 @@ object LoadBalance {
   }
 }
 
+object SingletonServer{
+  def testSingletonServer() {
+    println("--------------单例模式：--------------")
+    //构建负载均衡器1
+    val balance1 = LoadBalance
+    //构建负载均衡器2
+    val balance2 = LoadBalance
+    //判断balance1和balance2是否一致
+    println(balance1.eq(balance2))
+    //添加服务器
+    balance1.addServer("Server1")
+    balance1.addServer("Server2")
+    balance1.addServer("Server3")
+    balance1.addServer("Server4")
+    //随机获取服务器
+    for (i <- 1 to 10) {
+      println("get " + balance1.getServer())
+    }
+    //用balance2移除服务器
+    balance2.removeServer("Server1")
+    //随机获取服务器
+    for (i <- 1 to 10) {
+      println("get " + balance2.getServer())
+    }
+  }
+}

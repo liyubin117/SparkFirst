@@ -80,3 +80,22 @@ class LinuxImp extends ImageImp {
 class MaxOsImp extends ImageImp {
   override def doPaint() = println("在Mac操作系统中显示图片")
 }
+
+object Bridge{
+    def testBridge() {
+    println("--------------桥接模式：--------------")
+    /**
+     * 图片
+     */
+    val image: Image = new JPGImage
+    /**
+     * 图片展示
+     */
+    image.imageImp = new WindowsImp
+
+    /**
+     * 设置文件
+     */
+    image.parseFile("你好")
+  }
+}

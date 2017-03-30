@@ -82,3 +82,22 @@ class BlackBorderDecorator(component: Component) extends ComponentDecorator(comp
 
     def blackBorder() = println("为构件增加黑色边框")
 }
+
+object Decorator{
+   def testDecorator() {
+    println("--------------装饰器模式：--------------")
+    /**
+     * 窗口
+     */
+    val component: Component = new Window
+    /**
+     * 滚动条来装饰窗口
+     */
+    val componentSB: Component = new ScrollBarDecorator(component)
+    /**
+     * 黑色边框装饰滚动条装饰类
+     */
+    val componentBB: Component = new BlackBorderDecorator(componentSB)
+    componentBB.display()
+  }
+}
